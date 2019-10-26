@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"aqui deberia aparecer algo",Toast.LENGTH_LONG).show();
                 }
                 Toast.makeText(getApplicationContext(),"nel prro",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplicationContext(),PerfilTutor.class));
             }
         });
         registro.setOnClickListener(new View.OnClickListener() {
