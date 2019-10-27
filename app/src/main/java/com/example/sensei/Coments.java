@@ -23,7 +23,6 @@ public class Coments extends AppCompatActivity implements AdapterView.OnItemClic
             new Coments_Class(R.drawable.a2, "Jhonatan", "Mal servicio"),
             new Coments_Class(R.drawable.a3, "Pepe", "Medio regulis servicio"),
             new Coments_Class(R.drawable.a4, "Maria", "servicio"),
-
     };
     ListView listaComents;
 
