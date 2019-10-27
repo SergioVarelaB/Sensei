@@ -78,7 +78,7 @@
         app:srcCompat="@drawable/telephone" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/ivComents"
         android:layout_width="44dp"
         android:layout_height="43dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,7 +123,7 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView17"
+        app:layout_constraintEnd_toStartOf="@+id/ivComents"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
