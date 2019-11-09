@@ -2,6 +2,7 @@ package com.example.sensei;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,14 +11,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
     EditText name,pass;
     TextView registro;
     Button btn;
-    String nombre = "temo";
-    String passwd = "";
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,22 +37,42 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String n = name.getText().toString();
-                String p = pass.getText().toString();
-                if(n==nombre && p == passwd){
-                    Toast.makeText(getApplicationContext(),"aqui deberia aparecer algo",Toast.LENGTH_LONG).show();
-                }
-                Toast.makeText(getApplicationContext(),"nel prro",Toast.LENGTH_LONG).show();
-                startActivity(new Intent(getApplicationContext(),PerfilTutor.class));
+                login();
             }
         });
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Registro.class));
+                startActivity(new Intent(getApplicationContext(),Registro.class));
             }
         });
-
-
+    }
+    public void login(){
+        StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/login.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        /*Toast.makeText(getApplicationContext(),
+                                "this is a response :" + response, Toast.LENGTH_SHORT).show();*/
+                        if(response.contains("1")){
+                            startActivity(new Intent(getApplicationContext(), PerfilTutor.class));
+                        }else{
+                            Toast.makeText(getApplicationContext(),"error en la contraseña", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("username",name.getText().toString());
+                params.put("password",pass.getText().toString());
+                return params;
+            }
+        };
+        Volley.newRequestQueue(this).add(request);
     }
 }

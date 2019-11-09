@@ -12,21 +12,26 @@ import android.widget.ImageView;
 
 
 public class PerfilTutor extends AppCompatActivity  {
-    ImageView ivComents, ivEstrellas;
-
+    ImageView ivComents, ivEstrellas, ivNotifications;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_tutor);
         ivComents = findViewById(R.id.ivComents);
         ivEstrellas = findViewById(R.id.estrellas);
+        ivNotifications = findViewById(R.id.ivNotifications);
+        ivNotifications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.notifications_layout);
+            }
+        });
         ivComents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Coments.class));
             }
         });
-
     }
     public void estrellas(View v){
         final Dialog dialog = new Dialog(this);
@@ -35,4 +40,5 @@ public class PerfilTutor extends AppCompatActivity  {
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.show();
     }
+
 }
