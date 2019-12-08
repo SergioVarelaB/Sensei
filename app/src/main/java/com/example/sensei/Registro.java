@@ -13,10 +13,18 @@ import android.widget.Toast;
 
 public class Registro extends AppCompatActivity {
     Button btn;
+    EditText nombre,apellido,edad,contra,insti,correo,telefono;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        nombre = findViewById(R.id.etNombre);
+        apellido = findViewById(R.id.etApellido);
+        contra = findViewById(R.id.etContra);
+        insti = findViewById(R.id.etInsti);
+        correo = findViewById(R.id.etCorreo);
+        telefono = findViewById(R.id.etTel);
+
 
     }
     public void conocimientos(View v){

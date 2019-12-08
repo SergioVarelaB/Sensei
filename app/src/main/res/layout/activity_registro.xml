@@ -43,7 +43,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/etNombre"
                 android:layout_width="327dp"
                 android:layout_height="42dp"
                 android:layout_gravity="center"
@@ -63,7 +63,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/etApellido"
                 android:layout_width="327dp"
                 android:layout_height="46dp"
                 android:layout_gravity="center"
@@ -82,7 +82,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/etContra"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -101,7 +101,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/etInsti"
                 android:layout_width="327dp"
                 android:layout_height="46dp"
                 android:layout_gravity="center"
@@ -120,7 +120,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/etCorreo"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -139,7 +139,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/etTel"
                 android:layout_width="327dp"
                 android:layout_height="46dp"
                 android:layout_gravity="center"

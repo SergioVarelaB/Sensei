@@ -19,7 +19,6 @@ public class ComentsAdapter extends ArrayAdapter<Coments_Class> {
         this.resource = resource;
         this.comentarios = objects;
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
