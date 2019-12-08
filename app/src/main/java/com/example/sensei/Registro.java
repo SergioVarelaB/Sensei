@@ -17,7 +17,6 @@ public class Registro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-
     }
     public void conocimientos(View v){
         final Dialog dialog = new Dialog(this);
