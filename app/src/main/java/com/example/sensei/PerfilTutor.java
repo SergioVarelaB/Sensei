@@ -32,9 +32,9 @@ public class PerfilTutor extends AppCompatActivity  {
     ImageView ivComents, ivEstrellas, ivNotifications;
     TextView nombre;
     Thread tHilo;
-    int id = -1;
+    Integer id;
     String nombr = "...";
-    Intent in = new Intent();
+    Intent in = getIntent();
     //Handler
     Handler handler = new Handler(){
         @Override
@@ -54,7 +54,9 @@ public class PerfilTutor extends AppCompatActivity  {
         ivEstrellas = findViewById(R.id.estrellas);
         ivNotifications = findViewById(R.id.ivNotifications);
         nombre = findViewById(R.id.tvNombreTut);
-        id = in.getIntExtra("id", -1);
+        Intent intent = getIntent();
+        id = intent.getIntExtra("id",0);
+        Log.wtf("wtf", id+"");
         tHilo = new Thread() {
             @Override
             public void run() {
