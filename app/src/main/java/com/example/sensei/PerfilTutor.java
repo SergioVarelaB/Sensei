@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,8 +31,6 @@ import java.util.Map;
 
 public class PerfilTutor extends AppCompatActivity  {
     ImageView ivComents, ivEstrellas, ivNotifications;
-    TextView nombre;
-    String nombr;
     Thread tHilo;
     Integer id;
     Intent in = getIntent();
@@ -60,8 +59,9 @@ public class PerfilTutor extends AppCompatActivity  {
                                     String nombr = name.getString("nombre");
                                     String correo = name.getString("correo");
                                     String telefono = name.getString("telefono");
+                                    String coments = name.getString("count(*)");
                                     Log.wtf("json 2", nombr);
-                                    info(nombr,correo,telefono);
+                                    info(nombr,correo,telefono,coments);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -104,13 +104,15 @@ public class PerfilTutor extends AppCompatActivity  {
         dialog.show();
     }
 
-    public void info(String nombre, String correo, String telefono){
+    public void info(String nombre, String correo, String telefono, String coments){
         TextView nomb = findViewById(R.id.tvNombreTut);
         TextView corr = findViewById(R.id.tvCorreoTut);
         TextView tel = findViewById(R.id.tvTelTut);
+        TextView com = findViewById(R.id.tvComents);
         nomb.setText(nombre);
         corr.setText(correo);
         tel.setText(telefono);
+        com.setText(coments);
 
     }
 }
