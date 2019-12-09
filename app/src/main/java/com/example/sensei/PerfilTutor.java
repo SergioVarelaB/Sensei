@@ -31,21 +31,10 @@ import java.util.Map;
 public class PerfilTutor extends AppCompatActivity  {
     ImageView ivComents, ivEstrellas, ivNotifications;
     TextView nombre;
+    String nombr;
     Thread tHilo;
     Integer id;
-    String nombr = "...";
     Intent in = getIntent();
-    //Handler
-    Handler handler = new Handler(){
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            super.handleMessage(msg);
-            //aqui ya se puede interactuar con la interfaz grafica
-            //estamos en el hilo principal prros
-            String mensaje = (String) msg.obj;
-            nombre.setText(mensaje);
-        }
-    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +42,6 @@ public class PerfilTutor extends AppCompatActivity  {
         ivComents = findViewById(R.id.ivComents);
         ivEstrellas = findViewById(R.id.estrellas);
         ivNotifications = findViewById(R.id.ivNotifications);
-        nombre = findViewById(R.id.tvNombreTut);
         Intent intent = getIntent();
         id = intent.getIntExtra("id",0);
         Log.wtf("wtf", id+"");
@@ -70,14 +58,13 @@ public class PerfilTutor extends AppCompatActivity  {
                                     JSONArray jsonTutor = new JSONArray(response);
                                     JSONObject name = jsonTutor.getJSONObject(0);
                                     String nombr = name.getString("nombre");
+                                    String correo = name.getString("correo");
+                                    String telefono = name.getString("telefono");
                                     Log.wtf("json 2", nombr);
-                                    Message msg = handler.obtainMessage(1,nombr);
-                                    //handler.dispatchMessage(msg);
-                                    handler.sendMessage(msg);
+                                    info(nombr,correo,telefono);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                               // id = Integer.parseInt(response);
                                 Toast.makeText(getApplicationContext(), "este es el id " + id, Toast.LENGTH_SHORT).show();
                             }
                         }, new Response.ErrorListener() {
@@ -115,5 +102,15 @@ public class PerfilTutor extends AppCompatActivity  {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.show();
+    }
+
+    public void info(String nombre, String correo, String telefono){
+        TextView nomb = findViewById(R.id.tvNombreTut);
+        TextView corr = findViewById(R.id.tvCorreoTut);
+        TextView tel = findViewById(R.id.tvTelTut);
+        nomb.setText(nombre);
+        corr.setText(correo);
+        tel.setText(telefono);
+
     }
 }

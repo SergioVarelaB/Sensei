@@ -56,15 +56,13 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        /*Toast.makeText(getApplicationContext(),
-                                "this is a response :" + response, Toast.LENGTH_SHORT).show();*/
-                        id = Integer.parseInt(response);
-                        //Toast.makeText(getApplicationContext(),"este es el id "+id,Toast.LENGTH_SHORT).show();
-                        if(id > 0){
-                            Intent intent = new Intent(getApplicationContext(), PerfilTutor.class);
-                            intent.putExtra("id",id);
-                            startActivity(intent);
-                        }else{
+                    Log.wtf("wtff", response + "");
+                    id = Integer.parseInt(response);
+                    if (id != -1) {
+                        Intent intent = new Intent(getApplicationContext(), PerfilTutor.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                    }else{
                             Toast.makeText(getApplicationContext(),"error en la contraseña", Toast.LENGTH_SHORT).show();
                         }
                     }
