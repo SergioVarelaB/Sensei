@@ -1,8 +1,6 @@
 package com.example.sensei;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,13 +13,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,7 @@ public class PerfilTutor extends AppCompatActivity  {
     TextView nombre;
     Thread tHilo;
     int id = -1;
+    String nombr = "...";
     Intent in = new Intent();
     //Handler
     Handler handler = new Handler(){
@@ -57,15 +59,23 @@ public class PerfilTutor extends AppCompatActivity  {
             @Override
             public void run() {
                 super.run();
-                StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/.php",
+                StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/tutor_info.php",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-
-                                Message msg = handler.obtainMessage(1,"hola");
-                                //handler.dispatchMessage(msg);
-                                handler.sendMessage(msg);
-                                id = Integer.parseInt(response);
+                                Log.wtf("json", response);
+                                try {
+                                    JSONArray jsonTutor = new JSONArray(response);
+                                    JSONObject name = jsonTutor.getJSONObject(0);
+                                    String nombr = name.getString("nombre");
+                                    Log.wtf("json 2", nombr);
+                                    Message msg = handler.obtainMessage(1,nombr);
+                                    //handler.dispatchMessage(msg);
+                                    handler.sendMessage(msg);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                               // id = Integer.parseInt(response);
                                 Toast.makeText(getApplicationContext(), "este es el id " + id, Toast.LENGTH_SHORT).show();
                             }
                         }, new Response.ErrorListener() {
@@ -75,7 +85,7 @@ public class PerfilTutor extends AppCompatActivity  {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
-                        params.put("id",id+"");
+                        params.put("id_tutor",id+"");
                         //params.put("password", pass.getText().toString());
                         return params;
                     }
@@ -104,5 +114,4 @@ public class PerfilTutor extends AppCompatActivity  {
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.show();
     }
-
 }
