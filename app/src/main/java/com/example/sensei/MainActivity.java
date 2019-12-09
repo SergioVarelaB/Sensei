@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     EditText name,pass;
     TextView registro;
     Button btn;
+    Thread hilo;
+    int id = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +58,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         /*Toast.makeText(getApplicationContext(),
                                 "this is a response :" + response, Toast.LENGTH_SHORT).show();*/
-                        if(response.contains("1")){
-                            startActivity(new Intent(getApplicationContext(), PerfilTutor.class));
+                        id = Integer.parseInt(response);
+                        Toast.makeText(getApplicationContext(),"este es el id "+id,Toast.LENGTH_SHORT).show();
+                        if(id > 0){
+                            Intent intent = new Intent(getApplicationContext(), PerfilTutor.class);
+                            intent.putExtra("id",id);
+                            startActivity(intent);
                         }else{
                             Toast.makeText(getApplicationContext(),"error en la contraseña", Toast.LENGTH_SHORT).show();
                         }
@@ -75,4 +83,5 @@ public class MainActivity extends AppCompatActivity {
         };
         Volley.newRequestQueue(this).add(request);
     }
+
 }

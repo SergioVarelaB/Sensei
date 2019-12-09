@@ -103,7 +103,7 @@
         app:srcCompat="@drawable/envelope" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tvNombreTut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Droid"

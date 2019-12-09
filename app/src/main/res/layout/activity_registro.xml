@@ -161,7 +161,7 @@
                 tools:layout_editor_absoluteY="641dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buttonRegistro"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
