@@ -92,7 +92,9 @@ public class PerfilTutor extends AppCompatActivity  {
         ivComents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Coments.class));
+                Intent inCom = new Intent(getApplicationContext(),Coments.class);
+                inCom.putExtra("id", id);
+                startActivity(inCom);
             }
         });
     }
