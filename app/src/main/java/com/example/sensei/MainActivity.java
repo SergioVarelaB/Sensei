@@ -9,7 +9,9 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,13 +25,14 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     EditText name,pass;
     TextView registro;
     Button btn;
     Thread hilo;
     int id = -1;
-
+    Switch sw;
+    Boolean login = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +41,17 @@ public class MainActivity extends AppCompatActivity {
         pass = findViewById(R.id.etPass);
         registro = findViewById(R.id.tvRegs);
         btn = findViewById(R.id.btnOk);
+        sw = findViewById(R.id.swAlumno);
+        sw.setOnCheckedChangeListener(this);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login();
+                if(login){
+                    login();
+                }else{
+                    loginAlumno();
+                }
+
             }
         });
         registro.setOnClickListener(new View.OnClickListener() {
@@ -82,4 +92,44 @@ public class MainActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }
 
+    public void loginAlumno(){
+        StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/login.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.wtf("wtff", response + "");
+                        id = Integer.parseInt(response);
+                        if (id != -1) {
+                            /*Intent intent = new Intent(getApplicationContext(), PerfilTutor.class);
+                            intent.putExtra("id", id);
+                            startActivity(intent);*/
+                            Toast.makeText(getApplicationContext(),"alumno",Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getApplicationContext(),"error en la contraseña", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("username",name.getText().toString());
+                params.put("password",pass.getText().toString());
+                return params;
+            }
+        };
+        Volley.newRequestQueue(this).add(request);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(isChecked){
+            login = true;
+        }else{
+            login = false;
+        }
+    }
 }

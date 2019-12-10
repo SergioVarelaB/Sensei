@@ -105,7 +105,6 @@ public class PerfilTutor extends AppCompatActivity  {
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.show();
     }
-
     public void info(String nombre, String correo, String telefono, String coments){
         TextView nomb = findViewById(R.id.tvNombreTut);
         TextView corr = findViewById(R.id.tvCorreoTut);
@@ -115,6 +114,5 @@ public class PerfilTutor extends AppCompatActivity  {
         corr.setText(correo);
         tel.setText(telefono);
         com.setText(coments);
-
     }
 }
