@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Lisa_Tutores"></activity>
+        <activity android:name=".RegistroAlumno"></activity>
+        <activity android:name=".Lisa_Tutores" />
         <activity android:name=".Coments" />
         <activity android:name=".PerfilTutor" />
         <activity android:name=".Registro" />

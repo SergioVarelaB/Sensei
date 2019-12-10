@@ -94,26 +94,6 @@
                 android:inputType="textPassword" />
 
             <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="Instituto"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/etInsti"
-                android:layout_width="327dp"
-                android:layout_height="46dp"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,19 +135,6 @@
                 android:inputType="phone" />
 
             <Button
-                android:id="@+id/conocimientos"
-                android:layout_width="327dp"
-                android:layout_height="46dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/button"
-                android:onClick="conocimientos"
-                android:text="conocimientos en:"
-                android:textColor="#FC0A0000"
-                tools:layout_editor_absoluteX="-19dp"
-                tools:layout_editor_absoluteY="641dp" />
-
-            <Button
                 android:id="@+id/buttonRegistro"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
@@ -184,7 +151,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
-        android:text="Registro Tutor"
+        android:text="Registro Alumno"
         android:textColor="#000000"
         android:textSize="36sp"
         android:textStyle="bold"

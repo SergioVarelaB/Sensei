@@ -26,7 +26,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Coments extends AppCompatActivity{
-    ArrayList<Coments_Class> coments = new ArrayList<Coments_Class>();
     ListView listaComents;
     Thread tHilo;
     int id = 0;

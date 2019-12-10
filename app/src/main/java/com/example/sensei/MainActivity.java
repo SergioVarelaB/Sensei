@@ -1,8 +1,10 @@
 package com.example.sensei;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DownloadManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -57,7 +59,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Registro.class));
+                alertDialog();
+                //startActivity(new Intent(getApplicationContext(),Registro.class));
             }
         });
     }
@@ -91,18 +94,17 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         };
         Volley.newRequestQueue(this).add(request);
     }
-
     public void loginAlumno(){
-        StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/login.php",
+        StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/loginAlumno.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.wtf("wtff", response + "");
                         id = Integer.parseInt(response);
                         if (id != -1) {
-                            /*Intent intent = new Intent(getApplicationContext(), PerfilTutor.class);
+                            Intent intent = new Intent(getApplicationContext(), Lisa_Tutores.class);
                             intent.putExtra("id", id);
-                            startActivity(intent);*/
+                            startActivity(intent);
                             Toast.makeText(getApplicationContext(),"alumno",Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(getApplicationContext(),"error en la contraseña", Toast.LENGTH_SHORT).show();
@@ -123,7 +125,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         };
         Volley.newRequestQueue(this).add(request);
     }
-
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if(isChecked){
@@ -131,5 +132,29 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         }else{
             login = false;
         }
+    }
+
+    private void alertDialog() {
+        AlertDialog.Builder dialog=new AlertDialog.Builder(this);
+        dialog.setTitle("¿Quieres registrarte?");
+        dialog.setMessage("¿Como alumno o como tutor?");
+        dialog.setPositiveButton(
+                        "Alumno",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(getApplicationContext(),RegistroAlumno.class));
+                            }
+                        });
+        dialog.setNegativeButton(
+                "Tutor",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog,int which){
+                        startActivity(new Intent(getApplicationContext(),Registro.class));
+                    }
+                });
+        AlertDialog alertDialog=dialog.create();
+        alertDialog.show();
     }
 }
