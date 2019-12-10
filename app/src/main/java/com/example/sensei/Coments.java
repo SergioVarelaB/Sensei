@@ -49,9 +49,9 @@ public class Coments extends AppCompatActivity implements AdapterView.OnItemClic
                                 Log.wtf("json", response);
                                 try {
                                     JSONArray jsonTutor = new JSONArray(response);
-                                    JSONObject name = jsonTutor.getJSONObject(0);
-
+                                    
                                     for(int i = 0 ; i < jsonTutor.length() ; i++ ){
+                                        JSONObject name = jsonTutor.getJSONObject(i);
                                         String nombr = name.getString("nombre");
                                         String correo = name.getString("mensaje");
                                         String telefono = name.getString("estrellas");

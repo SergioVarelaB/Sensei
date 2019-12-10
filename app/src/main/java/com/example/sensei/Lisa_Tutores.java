@@ -30,12 +30,10 @@ public class Lisa_Tutores extends AppCompatActivity implements AdapterView.OnIte
     Thread tHilo;
     ArrayList<Tutores_Class> tut = new ArrayList<Tutores_Class>();
     int id = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coments);
-
         Intent intent = getIntent();
         id = intent.getIntExtra("id",0);
         Log.wtf("wtf", id+"");
@@ -72,7 +70,6 @@ public class Lisa_Tutores extends AppCompatActivity implements AdapterView.OnIte
             }
         };
         tHilo.start();
-
     }
     public void relleno(){
         listaComents = findViewById(R.id.listComents);
@@ -83,5 +80,4 @@ public class Lisa_Tutores extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         this.finish();
     }
-
 }
