@@ -3,6 +3,7 @@ package com.example.sensei;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,10 +26,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Coments extends AppCompatActivity{
+public class Coments extends AppCompatActivity implements AdapterView.OnItemClickListener{
     ListView listaComents;
     Thread tHilo;
     int id = 0;
+    ArrayList<Coments_Class> com = new ArrayList<Coments_Class>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +50,7 @@ public class Coments extends AppCompatActivity{
                                 try {
                                     JSONArray jsonTutor = new JSONArray(response);
                                     JSONObject name = jsonTutor.getJSONObject(0);
-                                    ArrayList<Coments_Class> com = new ArrayList<Coments_Class>();
+
                                     for(int i = 0 ; i < jsonTutor.length() ; i++ ){
                                         String nombr = name.getString("nombre");
                                         String correo = name.getString("mensaje");
@@ -56,7 +58,7 @@ public class Coments extends AppCompatActivity{
                                         Log.wtf("json 2", nombr);
                                         com.add(new Coments_Class(R.drawable.a1,nombr,correo));
                                     }
-                                    rellenar(com);
+                                    relleno();
                                     //info(nombr,correo,telefono,coments);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -79,9 +81,19 @@ public class Coments extends AppCompatActivity{
             }
         };
         tHilo.start();
+
+       /* listaComents = findViewById(R.id.listComents);
+        listaComents.setAdapter(new ComentsAdapter(this, R.layout.coments_layout, com));
+        listaComents.setOnItemClickListener(this);*/
+
     }
-    public void rellenar(ArrayList<Coments_Class> comentarios){
+    public void relleno(){
         listaComents = findViewById(R.id.listComents);
-        listaComents.setAdapter(new ComentsAdapter(this, R.layout.coments_layout, comentarios));
+        listaComents.setAdapter(new ComentsAdapter(this, R.layout.coments_layout, com));
+        listaComents.setOnItemClickListener(this);
+    }
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //this.finish();
     }
 }
