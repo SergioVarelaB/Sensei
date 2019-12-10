@@ -3,7 +3,6 @@ package com.example.sensei;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -29,13 +28,13 @@ public class Registro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-        nombre = findViewById(R.id.etNombre);
-        apellido = findViewById(R.id.etApellido);
-        contra = findViewById(R.id.etContra);
+        nombre = findViewById(R.id.etNombreA);
+        apellido = findViewById(R.id.etApellidoA);
+        contra = findViewById(R.id.etContraA);
         insti = findViewById(R.id.etInsti);
-        correo = findViewById(R.id.etCorreo);
-        telefono = findViewById(R.id.etTel);
-        btn = findViewById(R.id.buttonRegistro);
+        correo = findViewById(R.id.etCorreoA);
+        telefono = findViewById(R.id.etTelA);
+        btn = findViewById(R.id.buttonRegistroA);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

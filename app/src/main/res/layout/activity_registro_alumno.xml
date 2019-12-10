@@ -45,7 +45,7 @@
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/etNombre"
+                android:id="@+id/etNombreA"
                 android:layout_width="327dp"
                 android:layout_height="42dp"
                 android:layout_gravity="center"
@@ -66,7 +66,7 @@
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/etApellido"
+                android:id="@+id/etApellidoA"
                 android:layout_width="327dp"
                 android:layout_height="46dp"
                 android:layout_gravity="center"
@@ -86,7 +86,7 @@
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/etContra"
+                android:id="@+id/etContraA"
                 android:layout_width="327dp"
                 android:layout_height="46dp"
                 android:layout_gravity="center"
@@ -106,7 +106,7 @@
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/etCorreo"
+                android:id="@+id/etCorreoA"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -126,7 +126,7 @@
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/etTel"
+                android:id="@+id/etTelA"
                 android:layout_width="327dp"
                 android:layout_height="46dp"
                 android:layout_gravity="center"
@@ -135,7 +135,7 @@
                 android:inputType="phone" />
 
             <Button
-                android:id="@+id/buttonRegistro"
+                android:id="@+id/buttonRegistroA"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

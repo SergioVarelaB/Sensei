@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     Thread hilo;
     int id = -1;
     Switch sw;
-    Boolean login = true;
+    Boolean login = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
