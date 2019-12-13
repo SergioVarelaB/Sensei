@@ -24,7 +24,7 @@ public class ComentsAdapter extends ArrayAdapter<Coments_Class> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
-        TextView txtNombre, txtDesc, textView;
+        TextView txtNombre, txtDesc;
 
         if(convertView == null){
             //Crear nuestro layout que representa una fila en la lista

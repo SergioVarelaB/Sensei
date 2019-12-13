@@ -48,7 +48,7 @@ public class RegistroAlumno extends AppCompatActivity {
                         if(response == "1"){
                             Toast.makeText(getApplicationContext(),"usuario añadido de forma exitosa", Toast.LENGTH_SHORT).show();
                         }else{
-                            Toast.makeText(getApplicationContext(),"error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {

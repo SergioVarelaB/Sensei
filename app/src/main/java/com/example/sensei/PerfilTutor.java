@@ -39,8 +39,6 @@ public class PerfilTutor extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_tutor);
         ivComents = findViewById(R.id.ivComents);
-        ivEstrellas = findViewById(R.id.estrellas);
-        ivNotifications = findViewById(R.id.ivNotifications);
         Intent intent = getIntent();
         id = intent.getIntExtra("id",0);
         tHilo = new Thread() {
@@ -66,7 +64,7 @@ public class PerfilTutor extends AppCompatActivity  {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                                Toast.makeText(getApplicationContext(), "este es el id " + id, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), "este es el id " + id, Toast.LENGTH_SHORT).show();
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -84,12 +82,7 @@ public class PerfilTutor extends AppCompatActivity  {
             }
         };
         tHilo.start();
-        ivNotifications.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setContentView(R.layout.notifications_layout);
-            }
-        });
+
         ivComents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,14 +92,7 @@ public class PerfilTutor extends AppCompatActivity  {
             }
         });
     }
-    public void estrellas(View v){
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.estrellas_layout);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-        dialog.show();
-    }
-    public void info(String nombre, String correo, String telefono, String coments, int imagen){
+    public void info(String nombre, String correo, String telefono, String coments){
         TextView nomb = findViewById(R.id.tvNombreTut);
         TextView corr = findViewById(R.id.tvCorreoTut);
         TextView tel = findViewById(R.id.tvTelTut);

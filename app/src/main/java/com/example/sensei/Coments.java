@@ -82,10 +82,6 @@ public class Coments extends AppCompatActivity implements AdapterView.OnItemClic
         };
         tHilo.start();
 
-       /* listaComents = findViewById(R.id.listComents);
-        listaComents.setAdapter(new ComentsAdapter(this, R.layout.coments_layout, com));
-        listaComents.setOnItemClickListener(this);*/
-
     }
     public void relleno(){
         listaComents = findViewById(R.id.listComents);
