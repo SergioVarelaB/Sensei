@@ -104,9 +104,9 @@
         android:background="@drawable/button"
         android:text="@string/login"
         android:textColor="@android:color/white"
+        android:fontFamily="@font/montserrat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/montserrat"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 

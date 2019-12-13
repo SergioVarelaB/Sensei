@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                             Intent intent = new Intent(getApplicationContext(), Lisa_Tutores.class);
                             intent.putExtra("id", id);
                             startActivity(intent);
-                            Toast.makeText(getApplicationContext(),"alumno",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(),"alumno",Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(getApplicationContext(),"error en la contraseña", Toast.LENGTH_SHORT).show();
                         }

@@ -78,7 +78,7 @@ public class Registro extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"usuario añadido de forma exitosa", Toast.LENGTH_SHORT).show();
                             finish();
                         }else{
-                            Toast.makeText(getApplicationContext(),"error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
