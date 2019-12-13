@@ -3,6 +3,7 @@ package com.example.sensei;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     int id = -1;
     Switch sw;
     Boolean login = false;
+    Intent servicioNoti;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         registro = findViewById(R.id.tvRegs);
         btn = findViewById(R.id.btnOk);
         sw = findViewById(R.id.swAlumno);
+        servicioNoti = new Intent(this, MyService.class);
         sw.setOnCheckedChangeListener(this);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +78,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                     if (id != -1) {
                         Intent intent = new Intent(getApplicationContext(), PerfilTutor.class);
                         intent.putExtra("id", id);
+                        servicioNoti.putExtra("id", id);
                         startActivity(intent);
+                        startService(servicioNoti);
                     }else{
                             Toast.makeText(getApplicationContext(),"error en la contraseña", Toast.LENGTH_SHORT).show();
                         }
@@ -157,4 +163,10 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         AlertDialog alertDialog=dialog.create();
         alertDialog.show();
     }
+
+    public void hideKeyboard(View view){
+        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
 }
