@@ -153,19 +153,60 @@
                 android:layout_marginBottom="30dp"
                 android:ems="10"
                 android:inputType="phone" />
-
-            <Button
-                android:id="@+id/conocimientos"
-                android:layout_width="327dp"
-                android:layout_height="46dp"
+            <CheckBox
+                android:id="@+id/cbquimica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/button"
-                android:onClick="conocimientos"
-                android:text="conocimientos en:"
-                android:textColor="#FC0A0000"
-                tools:layout_editor_absoluteX="-19dp"
-                tools:layout_editor_absoluteY="641dp" />
+                android:layout_marginTop="24dp"
+                android:tag="quimica"
+                android:text="Quimica"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.232"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cbFisica"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <CheckBox
+                android:id="@+id/cbCalculo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:tag="Calculo"
+                android:text="Calculo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.228"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <CheckBox
+                android:id="@+id/cbFisica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:tag="Fisica"
+                android:text="Fisica"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.219"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/cbCalculo" />
+
+            <CheckBox
+                android:id="@+id/cbProgramacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:tag="Programacion"
+                android:text="Programacion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.262"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cbquimica" />
+
 
             <Button
                 android:id="@+id/buttonRegistroA"
@@ -175,6 +216,8 @@
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/button"
                 android:text="Registrarse" />
+
+
 
         </LinearLayout>
     </ScrollView>

@@ -43,7 +43,6 @@ public class PerfilTutor extends AppCompatActivity  {
         ivNotifications = findViewById(R.id.ivNotifications);
         Intent intent = getIntent();
         id = intent.getIntExtra("id",0);
-        Log.wtf("wtf", id+"");
         tHilo = new Thread() {
             @Override
             public void run() {
@@ -52,15 +51,15 @@ public class PerfilTutor extends AppCompatActivity  {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                Log.wtf("json", response);
+                                //Log.wtf("json", response);
                                 try {
                                     JSONArray jsonTutor = new JSONArray(response);
                                     JSONObject name = jsonTutor.getJSONObject(0);
                                     String nombr = name.getString("nombre");
                                     String correo = name.getString("correo");
                                     String telefono = name.getString("telefono");
-                                    String coments = name.getString("count(*)");
-                                    Log.wtf("json 2", nombr);
+                                    String coments = name.getString("coments");
+                                    Log.wtf("jsonComents", coments);
                                     info(nombr,correo,telefono,coments);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -68,9 +67,9 @@ public class PerfilTutor extends AppCompatActivity  {
                                 Toast.makeText(getApplicationContext(), "este es el id " + id, Toast.LENGTH_SHORT).show();
                             }
                         }, new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) { }
-                                }) {
+                    @Override
+                    public void onErrorResponse(VolleyError error) { }
+                }) {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();

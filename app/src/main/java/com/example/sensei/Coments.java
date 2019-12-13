@@ -46,7 +46,7 @@ public class Coments extends AppCompatActivity implements AdapterView.OnItemClic
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                Log.wtf("json", response);
+                                //Log.wtf("json", response);
                                 try {
                                     JSONArray jsonTutor = new JSONArray(response);
                                     
@@ -54,7 +54,7 @@ public class Coments extends AppCompatActivity implements AdapterView.OnItemClic
                                         JSONObject name = jsonTutor.getJSONObject(i);
                                         String nombr = name.getString("nombre");
                                         String correo = name.getString("mensaje");
-                                        String telefono = name.getString("estrellas");
+                                       // String telefono = name.getString("estrellas");
                                         Log.wtf("json 2", nombr);
                                         com.add(new Coments_Class(R.drawable.a1,nombr,correo));
                                     }

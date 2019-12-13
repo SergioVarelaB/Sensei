@@ -66,7 +66,7 @@
         app:srcCompat="@drawable/favourites" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/ivMarcar"
         android:layout_width="53dp"
         android:layout_height="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +90,7 @@
         app:srcCompat="@drawable/rating" />
 
     <ImageView
-        android:id="@+id/imageView18"
+        android:id="@+id/ivMail"
         android:layout_width="68dp"
         android:layout_height="57dp"
         app:layout_constraintBottom_toBottomOf="parent"
