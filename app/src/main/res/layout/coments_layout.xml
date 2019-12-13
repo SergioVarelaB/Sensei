@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Droide"
             android:textColor="#F50A0202"
             android:textStyle="bold" />
@@ -40,6 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="lorem ipsun bla bla bla ......" />
     </LinearLayout>
 
