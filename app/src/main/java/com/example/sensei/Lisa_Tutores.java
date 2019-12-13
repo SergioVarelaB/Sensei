@@ -100,8 +100,7 @@ public class Lisa_Tutores extends AppCompatActivity implements AdapterView.OnIte
         in.putExtra("correo", tut.get(position).getCorreo());
         in.putExtra("comentarios",tut.get(position).getComentarios()+"");
         in.putExtra("conocimienos", tut.get(position).getConocimientos());
+        in.putExtra("imagen", tut.get(position).getImagen());
         startActivity(in);
     }
-
-
 }

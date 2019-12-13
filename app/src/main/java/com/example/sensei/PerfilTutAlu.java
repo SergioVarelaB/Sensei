@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.transition.CircularPropagation;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,7 +22,8 @@ public class PerfilTutAlu extends AppCompatActivity {
     Intent in = getIntent();
     TextView tvName, tvTelefon, tvCorreo, tvComents, tvConocimientos;
     String telefono, correo, name, comentarios, conocimientos;
-    ImageView ivPhono, ivMail, ivComents;
+    ImageView ivPhono, ivMail, ivComents, circularImageView2;
+    int ima = R.drawable.a4;
     int id = -1;
 
     @Override
@@ -35,9 +37,12 @@ public class PerfilTutAlu extends AppCompatActivity {
         correo = intent.getStringExtra("correo");
         comentarios = intent.getStringExtra("comentarios");
         conocimientos = intent.getStringExtra("conocimienos");
+        ima = intent.getIntExtra("imagen",0);
         ivPhono = findViewById(R.id.ivMarcar);
         tvName = findViewById(R.id.tvNombreTut2);
         ivComents = findViewById(R.id.ivComents2);
+        circularImageView2 = findViewById(R.id.circularImageView2);
+        circularImageView2.setImageResource(ima);
         tvConocimientos = findViewById(R.id.tvConoc);
         tvConocimientos.setText(conocimientos);
         Log.wtf("conoss de jamonsisho", conocimientos);

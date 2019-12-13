@@ -30,7 +30,7 @@ import java.util.Map;
 
 
 public class PerfilTutor extends AppCompatActivity  {
-    ImageView ivComents, ivEstrellas, ivNotifications;
+    ImageView ivComents, ivEstrellas, ivNotifications, imagenperfil;
     Thread tHilo;
     Integer id;
     Intent in = getIntent();
@@ -59,8 +59,10 @@ public class PerfilTutor extends AppCompatActivity  {
                                     String correo = name.getString("correo");
                                     String telefono = name.getString("telefono");
                                     String coments = name.getString("coments");
+                                    int imagen = name.getInt("imagen");
+                                    Log.wtf("este es el",R.drawable.a1+"");
                                     Log.wtf("jsonComents", coments);
-                                    info(nombr,correo,telefono,coments);
+                                    info(nombr,correo,telefono,coments, imagen);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -104,11 +106,13 @@ public class PerfilTutor extends AppCompatActivity  {
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.show();
     }
-    public void info(String nombre, String correo, String telefono, String coments){
+    public void info(String nombre, String correo, String telefono, String coments, int imagen){
         TextView nomb = findViewById(R.id.tvNombreTut);
         TextView corr = findViewById(R.id.tvCorreoTut);
         TextView tel = findViewById(R.id.tvTelTut);
         TextView com = findViewById(R.id.tvComents);
+        ImageView ima = findViewById(R.id.circularImageView);
+        ima.setImageResource(imagen);
         nomb.setText(nombre);
         corr.setText(correo);
         tel.setText(telefono);
