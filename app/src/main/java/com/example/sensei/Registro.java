@@ -28,9 +28,10 @@ import java.util.Map;
 
 public class Registro extends AppCompatActivity {
     Button btn;
-    EditText nombre,apellido,edad,contra,insti,correo,telefono;
+    EditText nombre,apellido,contra,insti,correo,telefono;
     int[] array;
     CheckBox calculo, fisica, quimica, programacion;
+    Thread tHilo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,40 +71,50 @@ public class Registro extends AppCompatActivity {
         });
     }
     public void registro(){
-        StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/registro.php",
-                new Response.Listener<String>() {
+        tHilo = new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/registro.php",
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                Log.wtf("response", response);
+                                if(response.contains("1")){
+                                    Toast.makeText(getApplicationContext(),"usuario añadido de forma exitosa", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }else{
+                                    Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
                     @Override
-                    public void onResponse(String response) {
-                        if(response.contains("1")){
-                            Toast.makeText(getApplicationContext(),"usuario añadido de forma exitosa", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }else{
-                            Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_SHORT).show();
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }){
+                    //mandamos los datos del registro
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String> params = new HashMap<>();
+                        params.put("username",nombre.getText().toString());
+                        params.put("apPat",apellido.getText().toString());
+                        params.put("tel",telefono.getText().toString());
+                        params.put("correo",correo.getText().toString());
+                        params.put("password",contra.getText().toString());
+                        for(int i = 0 ; i < 4 ; i++){
+                            String add = "con"+i+"";
+                            if(array[i] != 0) {
+                                params.put(add, ""+array[i]);
+                                Log.wtf("array "+i , add + "  "+ array[i]);
+                            }
                         }
+                        params.put("imagen",R.drawable.a2+"");
+                        return params;
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("username",nombre.getText().toString());
-                params.put("apPat",apellido.getText().toString());
-                params.put("tel",telefono.getText().toString());
-                params.put("correo",correo.getText().toString());
-                params.put("password",contra.getText().toString());
-                for(int i = 0 ; i < 4 ; i++){
-                    String add = "con"+i+"";
-                    if(array[i] != 0) {
-                        params.put(add, ""+array[i]);
-                        Log.wtf("array "+i , add + "  "+ array[i]);
-                    }
-                }
-                return params;
+                };
+                Volley.newRequestQueue(getApplicationContext()).add(request);
             }
         };
-        Volley.newRequestQueue(this).add(request);
+        tHilo.start();
     }
 }

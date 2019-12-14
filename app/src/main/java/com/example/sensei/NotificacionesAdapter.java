@@ -7,20 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-public class Imagenes_Adapter extends ArrayAdapter<imagen_class> {
+import java.util.ArrayList;
+
+public class NotificacionesAdapter extends ArrayAdapter<Notificaciones_Class> {
     Context context;
     int resource;
-    imagen_class[] seleccionar;
-    public Imagenes_Adapter(Context context, int resource, imagen_class[] objects) {
+    ArrayList<Notificaciones_Class> comentarios;
+    public NotificacionesAdapter(Context context, int resource, ArrayList<Notificaciones_Class> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
-        this.seleccionar = objects;
+        this.comentarios = objects;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
+        TextView txtNombre, txtDesc;
 
         if(convertView == null){
             //Crear nuestro layout que representa una fila en la lista
@@ -28,8 +32,15 @@ public class Imagenes_Adapter extends ArrayAdapter<imagen_class> {
             LayoutInflater lInflator = ((Activity) context).getLayoutInflater();
             convertView = lInflator.inflate(resource, parent, false);
         }
-        imageView = convertView.findViewById(R.id.ivImagenPer);
-        imageView.setImageResource(seleccionar[position].getImagen());
+
+        imageView = convertView.findViewById(R.id.imageVieww);
+        txtNombre = convertView.findViewById(R.id.nombre);
+        txtDesc = convertView.findViewById(R.id.coment);
+
+        imageView.setImageResource(comentarios.get(position).getImagen());
+        txtNombre.setText(comentarios.get(position).getNombre());
+        txtDesc.setText(comentarios.get(position).getDescripcion());
         return convertView;
     }
+
 }

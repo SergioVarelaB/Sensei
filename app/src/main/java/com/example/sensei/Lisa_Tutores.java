@@ -29,7 +29,7 @@ public class Lisa_Tutores extends AppCompatActivity implements AdapterView.OnIte
     ListView listaComents;
     Thread tHilo;
     ArrayList<Tutores_Class> tut = new ArrayList<Tutores_Class>();
-    int id = 0;
+    int id_alu = 0;
     int id_tutor = -1;
 
     @Override
@@ -37,7 +37,7 @@ public class Lisa_Tutores extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coments);
         Intent intent = getIntent();
-        id = intent.getIntExtra("id", 0);
+        id_alu = intent.getIntExtra("id", 0);
         //Log.wtf("wtf", id+"");
         tHilo = new Thread() {
             @Override
@@ -97,6 +97,8 @@ public class Lisa_Tutores extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent in = new Intent(this, PerfilTutAlu.class);
         in.putExtra("id_tutor", tut.get(position).getId());
+        in.putExtra("id_alu",id_alu);
+        Log.wtf("id alu", id_alu+"");
         in.putExtra("name", tut.get(position).getNombre());
         in.putExtra("telefono", tut.get(position).getTelefono());
         in.putExtra("correo", tut.get(position).getCorreo());

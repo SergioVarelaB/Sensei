@@ -1,7 +1,12 @@
 package com.example.sensei;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
 import android.app.Dialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -28,9 +33,8 @@ import org.w3c.dom.Text;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class PerfilTutor extends AppCompatActivity  {
-    ImageView ivComents, ivEstrellas, ivNotifications, imagenperfil;
+    ImageView ivComents, imagenperfil, ivnoti;
     Thread tHilo;
     Integer id;
     Intent in = getIntent();
@@ -39,6 +43,7 @@ public class PerfilTutor extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_tutor);
         ivComents = findViewById(R.id.ivComents);
+        ivnoti = findViewById(R.id.ivNoti);
         Intent intent = getIntent();
         id = intent.getIntExtra("id",0);
         tHilo = new Thread() {
@@ -58,8 +63,8 @@ public class PerfilTutor extends AppCompatActivity  {
                                     String telefono = name.getString("telefono");
                                     String coments = name.getString("coments");
                                     int imagen = name.getInt("imagen");
-                                    Log.wtf("este es el",R.drawable.a1+"");
-                                    Log.wtf("jsonComents", coments);
+                                    /*Log.wtf("este es el",R.drawable.a1+"");
+                                    Log.wtf("jsonComents", coments);*/
                                     info(nombr,correo,telefono,coments, imagen);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -91,8 +96,17 @@ public class PerfilTutor extends AppCompatActivity  {
                 startActivity(inCom);
             }
         });
+
+        ivnoti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent inCom = new Intent(getApplicationContext(),Notificaciones.class);
+                inCom.putExtra("id", id);
+                startActivity(inCom);
+            }
+        });
     }
-    public void info(String nombre, String correo, String telefono, String coments){
+    public void info(String nombre, String correo, String telefono, String coments, int imagen){
         TextView nomb = findViewById(R.id.tvNombreTut);
         TextView corr = findViewById(R.id.tvCorreoTut);
         TextView tel = findViewById(R.id.tvTelTut);
@@ -103,5 +117,21 @@ public class PerfilTutor extends AppCompatActivity  {
         corr.setText(correo);
         tel.setText(telefono);
         com.setText(coments);
+        noti();
     }
+    public void noti(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentTitle("John's Android Studio Tutorials")
+                .setContentText("A video has just arrived!");
+
+        //Creates the intent needed to show the notification
+        Intent notificationIntent = new Intent(getApplicationContext(), PerfilTutor.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
+    }
+
 }

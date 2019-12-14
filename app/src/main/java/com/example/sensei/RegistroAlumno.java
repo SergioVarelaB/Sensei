@@ -45,8 +45,9 @@ public class RegistroAlumno extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Log.wtf("response", response);
-                        if(response == "1"){
+                        if(response.contains("1")){
                             Toast.makeText(getApplicationContext(),"usuario añadido de forma exitosa", Toast.LENGTH_SHORT).show();
+                            finish();
                         }else{
                             Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_SHORT).show();
                         }
