@@ -82,10 +82,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                     if (id != -1) {
                         Intent intent = new Intent(getApplicationContext(), PerfilTutor.class);
                         intent.putExtra("id", id);
-
-                        /*servicioNoti.putExtra("id", id);
+                        //servicioNoti.putExtra("id", id);
                         startActivity(intent);
-                        startService(servicioNoti);*/
+                        //startService(servicioNoti);
                     }else{
                             Toast.makeText(getApplicationContext(),"error en la contraseña", Toast.LENGTH_SHORT).show();
                         }

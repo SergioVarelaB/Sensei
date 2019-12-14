@@ -92,7 +92,7 @@ public class Notificaciones extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //this.finish();
-        Uri uri = Uri.parse("smsto:" + mensaje);
+        Uri uri = Uri.parse("smsto:" + com.get(position).getDescripcion());
         Intent i = new Intent(Intent.ACTION_SENDTO, uri);
         String text = "Hola "+ nombre + ", quiero ponerme en contacto contigo";
         i.putExtra(Intent.EXTRA_TEXT, text);
