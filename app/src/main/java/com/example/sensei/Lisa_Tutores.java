@@ -39,6 +39,7 @@ public class Lisa_Tutores extends AppCompatActivity implements AdapterView.OnIte
         Intent intent = getIntent();
         id_alu = intent.getIntExtra("id", 0);
         //Log.wtf("wtf", id+"");
+        //pedimos informacion del tutor a la base de datos
         tHilo = new Thread() {
             @Override
             public void run() {
@@ -86,13 +87,13 @@ public class Lisa_Tutores extends AppCompatActivity implements AdapterView.OnIte
         };
         tHilo.start();
     }
-
+    //llenamos la list view
     public void relleno() {
         listaComents = findViewById(R.id.listComents);
         listaComents.setAdapter(new TutoresAdapter(this, R.layout.tutor_layout, tut));
         listaComents.setOnItemClickListener(this);
     }
-
+    //mandamos los datos a la siguiente actividad
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent in = new Intent(this, PerfilTutAlu.class);

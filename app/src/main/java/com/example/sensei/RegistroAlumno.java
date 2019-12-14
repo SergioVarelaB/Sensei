@@ -39,6 +39,7 @@ public class RegistroAlumno extends AppCompatActivity {
             }
         });
     }
+    //insert a la tabla de alumno
     public void registroA(){
         StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/registroAlumno.php",
                 new Response.Listener<String>() {

@@ -49,6 +49,7 @@ public class Registro extends AppCompatActivity {
         btn = findViewById(R.id.buttonRegistroA);
         array = new int[4];
         array = new int[]{-1,-1,-1,-1};
+        //verificar los check box
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +71,7 @@ public class Registro extends AppCompatActivity {
             }
         });
     }
+    //insert en las tablas de materias y tutores
     public void registro(){
         tHilo = new Thread() {
             @Override

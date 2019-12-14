@@ -126,6 +126,7 @@ public class PerfilTutAlu extends AppCompatActivity {
             startActivity(Intent.createChooser(i, ""));
     }
 
+    //insert a la tabla de "match" en la bd
     public void solicitar(){
         Thread tHilo;
         tHilo = new Thread() {

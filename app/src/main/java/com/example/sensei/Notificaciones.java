@@ -88,6 +88,7 @@ public class Notificaciones extends AppCompatActivity implements AdapterView.OnI
         listaNoti.setAdapter(new NotificacionesAdapter(this, R.layout.coments_layout, com));
         listaNoti.setOnItemClickListener(this);
     }
+    //whats app al alumno que solicito el servicio
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //this.finish();

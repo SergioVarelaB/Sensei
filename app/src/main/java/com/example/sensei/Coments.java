@@ -91,6 +91,6 @@ public class Coments extends AppCompatActivity implements AdapterView.OnItemClic
     }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //this.finish();
+        this.finish();
     }
 }

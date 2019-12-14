@@ -117,9 +117,9 @@ public class PerfilTutor extends AppCompatActivity  {
         corr.setText(correo);
         tel.setText(telefono);
         com.setText(coments);
-        noti();
+        //noti();//notificacion que no funciono bien
     }
-    public void noti(){
+    /*public void noti(){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("John's Android Studio Tutorials")
@@ -132,6 +132,6 @@ public class PerfilTutor extends AppCompatActivity  {
         // Add as notification
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(0, builder.build());
-    }
+    }*/
 
 }

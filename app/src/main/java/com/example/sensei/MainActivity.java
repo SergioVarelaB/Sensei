@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         sw = findViewById(R.id.swAlumno);
         servicioNoti = new Intent(this, MyService.class);
         sw.setOnCheckedChangeListener(this);
+        //checamos el tipo de login que se va a realizar
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,27 +61,31 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
             }
         });
+        //registro y alerta para tipo de registro
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 alertDialog();
                 //startActivity(new Intent(getApplicationContext(),Registro.class));
             }
         });
     }
+    //login de tutores
     public void login(){
         StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/login.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                    Log.wtf("wtff", response + "");
+                    //Log.wtf("wtff", response + "");
                     id = Integer.parseInt(response);
                     if (id != -1) {
                         Intent intent = new Intent(getApplicationContext(), PerfilTutor.class);
                         intent.putExtra("id", id);
-                        servicioNoti.putExtra("id", id);
+
+                        /*servicioNoti.putExtra("id", id);
                         startActivity(intent);
-                        startService(servicioNoti);
+                        startService(servicioNoti);*/
                     }else{
                             Toast.makeText(getApplicationContext(),"error en la contraseña", Toast.LENGTH_SHORT).show();
                         }
@@ -100,12 +105,13 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         };
         Volley.newRequestQueue(this).add(request);
     }
+    //login de alumno
     public void loginAlumno(){
         StringRequest request = new StringRequest(Request.Method.POST, "https://senseii.000webhostapp.com/loginAlumno.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.wtf("wtff", response + "");
+                        //Log.wtf("wtff", response + "");
                         id = Integer.parseInt(response);
                         if (id != -1) {
                             Intent intent = new Intent(getApplicationContext(), Lisa_Tutores.class);
@@ -131,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         };
         Volley.newRequestQueue(this).add(request);
     }
+    //switch de tutor
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if(isChecked){
@@ -140,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         }
     }
 
+    //alerta para checar el tipo de registro
     private void alertDialog() {
         AlertDialog.Builder dialog=new AlertDialog.Builder(this);
         dialog.setTitle("¿Quieres registrarte?");
